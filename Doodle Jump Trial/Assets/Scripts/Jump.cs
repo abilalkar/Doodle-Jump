@@ -5,36 +5,37 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
 
-    public float forceConst = 20;
-    private Rigidbody physics;
+    public float jumpHeight = 7f;
+    public bool isGrounded;
 
-    private Rigidbody selfRigidbody;
+    private Rigidbody rb;
 
-
-    void OnCollisionEnter2D(Collision2D touch)
+    void Start()
     {
-        physics = touch.collider.GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+    }
 
-        if (physics != null)
+    void Update()
+    {
+        if (isGrounded)
         {
-            selfRigidbody.AddForce(0, forceConst, 0, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpHeight);
         }
     }
 
-
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter(Collision other)
     {
-        
+        if (other.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionExit(Collision other)
     {
-        
+        if (other.gameObject.tag == "Ground")
+        {
+            isGrounded = false;
+        }
     }
 }
