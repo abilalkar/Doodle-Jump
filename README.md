@@ -1,2 +1,2 @@
 # Doodle Jump
- doodle jump game made for fun with unity
+3D doodle jump game being made for fun with unity
