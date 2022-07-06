@@ -5,40 +5,30 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
 
-    private float jumpHeight = 10;
-    private bool isGrounded;
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
 
-    private Rigidbody rb;
-
+    public bool isGrounded;
+    Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
+    }
+
+    void OnCollisionStay()
+    {
+        isGrounded = true;
     }
 
     void Update()
     {
-        if (isGrounded)
+        if ( isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpHeight);
 
-        }
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-            rb.AddForce(Vector3.up * jumpHeight);
-
-        }
-    }
-
-    void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
     }
+
 }
