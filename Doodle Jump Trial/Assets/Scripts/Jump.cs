@@ -5,8 +5,8 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
 
-    public float jumpHeight = 7f;
-    public bool isGrounded;
+    private float jumpHeight = 10;
+    private bool isGrounded;
 
     private Rigidbody rb;
 
@@ -20,6 +20,7 @@ public class Jump : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpHeight);
+
         }
     }
 
@@ -28,6 +29,8 @@ public class Jump : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            rb.AddForce(Vector3.up * jumpHeight);
+
         }
     }
 
