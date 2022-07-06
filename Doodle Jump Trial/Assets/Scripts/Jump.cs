@@ -5,20 +5,19 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
 
-    public float jumpPower;
-    private Vector2 characterSpeed;
-    private Rigidbody2D physics;
+    public float forceConst = 20;
+    private Rigidbody physics;
+
+    private Rigidbody selfRigidbody;
 
 
     void OnCollisionEnter2D(Collision2D touch)
     {
-        physics = touch.collider.GetComponent<Rigidbody2D>();
+        physics = touch.collider.GetComponent<Rigidbody>();
 
         if (physics != null)
         {
-            characterSpeed = physics.velocity;
-            characterSpeed.y = jumpPower;
-            physics.velocity = characterSpeed;
+            selfRigidbody.AddForce(0, forceConst, 0, ForceMode.Impulse);
         }
     }
 
