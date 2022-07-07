@@ -207,3 +207,4 @@ Received Import Request.
   path: Assets/Heavy_08_Emission.png
   artifactKey: Guid(456f3477df628c34abe505bc60ebf2aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Heavy_08_Emission.png using Guid(456f3477df628c34abe505bc60ebf2aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09be9c62f1151e1401bd5edc9c1e05e1') in 0.009677 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
